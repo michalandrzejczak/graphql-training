@@ -1,4 +1,3 @@
-#endpoint: ''
 endpoint: ${env:PRISMA_ENDPOINT}
 secret: ${env:PRISMA_SECRET}
 
