@@ -1,0 +1,9 @@
+#endpoint: ''
+endpoint: ${env:PRISMA_ENDPOINT}
+secret: ${env:PRISMA_SECRET}
+
+datamodel: datamodel.prisma
+
+generate:
+  - generator: javascript-client
+    output: ../src/generated/prisma-client
