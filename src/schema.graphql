@@ -1,15 +1,33 @@
+""" Queries """
 type Query {
     info: String!
     feed: [Link!]!
     link(id: ID!): Link
 }
 
+""" Mutations """
+type Mutation {
+    post(url: String!, description: String!): Link!
+    signup(email: String!, password: String!, name: String!): AuthPayload
+    login(email: String!, password: String!): AuthPayload
+}
+
+""" Other Types """
 type Link {
     id: ID!
     description: String!
     url: String!
+    user: User,
 }
 
-type Mutation {
-    post(url: String!, description: String!): Link!
+type AuthPayload {
+    token: String
+    user: User
+}
+
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    links: [Link!]!
 }
