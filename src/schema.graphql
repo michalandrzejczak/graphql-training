@@ -1,7 +1,7 @@
 """ Queries """
 type Query {
     info: String!
-    feed(filter: String): [Link!]!
+    feed(filter: String, skip: Int, first: Int, last: Int, orderBy: LinkOrderByInput): Feed!
     link(id: ID!): Link
 }
 
@@ -24,8 +24,13 @@ type Link {
     id: ID!
     description: String!
     url: String!
-    user: User,
+    user: User
     votes: [Vote!]!
+}
+
+type Feed {
+    links: [Link!]
+    count: Int!
 }
 
 type AuthPayload {
@@ -45,4 +50,14 @@ type Vote {
     id: ID!
     link: Link!
     user: User!
+}
+
+""" Enums """
+enum LinkOrderByInput {
+    description_ASC
+    description_DESC
+    url_ASC
+    url_DESC
+    createdAt_ASC
+    createdAt_DESC
 }

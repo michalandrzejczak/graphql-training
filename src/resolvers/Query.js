@@ -6,9 +6,26 @@ async function feed(root, args, context, info) {
         ],
     } : {};
 
-    return await context.prisma.links({
+    const links = await context.prisma.links({
         where,
-    })
+        skip: args.skip,
+        first: args.first,
+        last: args.last,
+        orderBy: args.orderBy,
+    });
+
+    const count = await context.prisma
+        .linksConnection({
+            where,
+        })
+        .aggregate()
+        .count();
+
+
+    return {
+        links,
+        count,
+    }
 }
 
 module.exports = {
