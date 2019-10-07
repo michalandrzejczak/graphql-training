@@ -3,7 +3,7 @@ function newLinkSubscribe(parent, args, context, info) {
 }
 
 function newVoteSubscribe(parent, args, context, info) {
-    return context.prisma.$subscribe.vote( {mutation_in: ['CREATED']}).node();
+    return context.prisma.$subscribe.vote({mutation_in: ['CREATED']}).node();
 }
 
 const newLink = {
