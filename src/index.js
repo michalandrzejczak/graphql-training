@@ -1,32 +1,12 @@
-require('dotenv').config();
-const { GraphQLServer } = require('graphql-yoga');
-const { prisma } = require('./generated/prisma-client');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './styles/index.css';
+import App from './components/App';
+import * as serviceWorker from './serviceWorker';
 
-const Query = require('./resolvers/Query');
-const Mutation = require('./resolvers/Mutation');
-const Subscription = require('./resolvers/Subscription');
-const User = require('./resolvers/User');
-const Link = require('./resolvers/Link');
-const Vote = require('./resolvers/Vote');
+ReactDOM.render(<App />, document.getElementById('root'));
 
-const resolvers = {
-    Query,
-    Mutation,
-    Subscription,
-    User,
-    Link,
-    Vote,
-};
-
-const server = new GraphQLServer({
-    typeDefs: './src/schema.graphql',
-    resolvers,
-    context: request => {
-        return {
-            ...request,
-            prisma,
-        };
-    },
-});
-
-server.start(() => console.log(`Server is running on http://localhost:4000`));
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
