@@ -22,7 +22,7 @@ class CreateLink extends Component {
         `);
 
         return (
-            <div className="pa4 measure">
+            <div className="ma3 measure">
                 <p className="f4 fw6 ph0 mh0">Add link</p>
                 <div className="flex flex-column mt3">
                     <label for="description" className="db fw6 lh-copy f6">
@@ -50,7 +50,11 @@ class CreateLink extends Component {
                         onChange={e => this.setState({url: e.target.value})}
                     />
                 </div>
-                <Mutation mutation={mutation} variables={{description, url}}>
+                <Mutation
+                    mutation={mutation}
+                    variables={{description, url}}
+                    onCompleted={() => this.props.history.push("/")}
+                >
                     {postMutation => (
                         <button
                             onClick={postMutation}

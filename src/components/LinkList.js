@@ -21,13 +21,13 @@ class LinkList extends Component {
         return (
             <Query query={linksQuery}>
                 {({loading, error, data}) => {
-                    if (loading) return <div>Loading...</div>;
+                    if (loading) return <div className="ma3 measure">Loading...</div>;
                     if (error) return <div className="dark-red">Unexpected error!</div>;
 
                     const linksToRender = data.feed.links;
 
                     return (
-                        <div className="pa4 ma3 measure ba b--light-silver">
+                        <div className="ma3 measure">
                             <p className="f4 fw6 ph0 mh0">Link list</p>
                             <ul className="list pl0">
                                 {linksToRender.map(link => (
