@@ -22,16 +22,19 @@ class LinkList extends Component {
             <Query query={linksQuery}>
                 {({loading, error, data}) => {
                     if (loading) return <div>Loading...</div>;
-                    if (error) return <div>Unexpected error!</div>;
+                    if (error) return <div className="dark-red">Unexpected error!</div>;
 
                     const linksToRender = data.feed.links;
 
                     return (
-                        <ul className={"list p10"}>
-                            {linksToRender.map(link => (
-                                <Link key={link.id} link={link}/>
-                            ))}
-                        </ul>
+                        <div className="pa4 ma3 measure ba b--light-silver">
+                            <p className="f4 fw6 ph0 mh0">Link list</p>
+                            <ul className="list pl0">
+                                {linksToRender.map(link => (
+                                    <Link key={link.id} link={link}/>
+                                ))}
+                            </ul>
+                        </div>
                     );
                 }}
             </Query>

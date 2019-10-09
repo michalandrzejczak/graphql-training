@@ -26,6 +26,7 @@ type Link {
     url: String!
     user: User
     votes: [Vote!]!
+    createdAt: String!
 }
 
 type Feed {
