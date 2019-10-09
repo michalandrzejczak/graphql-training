@@ -6,7 +6,7 @@ import Link from "./Link.js";
 
 class LinkList extends Component {
     render() {
-        const linksQuery = gql(`
+        const LINKS_QUERY = gql(`
             {
                 feed (orderBy: createdAt_DESC) {
                     links {
@@ -19,7 +19,7 @@ class LinkList extends Component {
         `);
 
         return (
-            <Query query={linksQuery}>
+            <Query query={LINKS_QUERY}>
                 {({loading, error, data}) => {
                     if (loading) return <div className="ma3 measure">Loading...</div>;
                     if (error) return <div className="dark-red">Unexpected error!</div>;

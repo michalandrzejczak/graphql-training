@@ -10,7 +10,7 @@ class CreateLink extends Component {
 
     render() {
         const {description, url} = this.state;
-        const mutation = gql(`
+        const POST_MUTATION = gql(`
             mutation PostMutation($description: String!, $url: String!) {
                 post(description: $description, url: $url) {
                     id
@@ -25,7 +25,7 @@ class CreateLink extends Component {
             <div className="ma3 measure">
                 <p className="f4 fw6 ph0 mh0">Add link</p>
                 <div className="flex flex-column mt3">
-                    <label for="description" className="db fw6 lh-copy f6">
+                    <label htmlFor="description" className="db fw6 lh-copy f6">
                         Description
                     </label>
                     <input
@@ -51,7 +51,7 @@ class CreateLink extends Component {
                     />
                 </div>
                 <Mutation
-                    mutation={mutation}
+                    mutation={POST_MUTATION}
                     variables={{description, url}}
                     onCompleted={() => this.props.history.push("/")}
                 >

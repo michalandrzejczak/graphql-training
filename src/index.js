@@ -9,20 +9,19 @@ import {createHttpLink} from "apollo-link-http";
 import {InMemoryCache} from "apollo-cache-inmemory";
 import {setContext} from "apollo-link-context";
 import {BrowserRouter} from "react-router-dom";
+import {AUTH_TOKEN} from "./constants";
 
 const httpLink = createHttpLink({
     uri: "http://localhost:4000",
 });
 
 const authLink = setContext((_, {headers}) => {
-    // @todo - temporary solution, token retrieved from direct graphql login mutation
-    const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjanphNmM0ZXkyZWE5MGI1M3I0NmQ5emlnIiwiaWF0IjoxNTcwNjE1OTcyfQ.oPwkna-LdtM1PdYpPo-nYSOg2GCcnp4GUesTQ0vl-oU";
+    const token = localStorage.getItem(AUTH_TOKEN);
 
     return {
         headers: {
             ...headers,
-            authorization: `Bearer ${token}`,
+            authorization: token ?  `Bearer ${token}` : "",
         },
     };
 });
