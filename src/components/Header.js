@@ -14,6 +14,9 @@ class Header extends Component {
                     <Link to="/" className="mh2 f6 no-underline dim black">
                         List
                     </Link>
+                    <Link to="/search" className="mh2 f6 no-underline dim black">
+                        Search a link
+                    </Link>
                     {authToken && (
                         <Link to="/create" className="mh2 f6 no-underline dim black">
                             Add new
