@@ -14,6 +14,9 @@ class Header extends Component {
                     <Link to="/" className="mh2 f6 no-underline dim black">
                         List
                     </Link>
+                    <Link to="/top" className="mh2 f6 no-underline dim black">
+                        Top
+                    </Link>
                     <Link to="/search" className="mh2 f6 no-underline dim black">
                         Search a link
                     </Link>
